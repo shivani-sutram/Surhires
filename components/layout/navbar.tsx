@@ -7,6 +7,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProp
 import { Brand } from "@/components/layout/brand";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/primitives";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 const links = [
   { label: "Home", href: "/" },
@@ -127,10 +128,11 @@ export function Navbar() {
             </Link>
           ))}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
           <Button href="/employers#post-a-job" size="sm">
             Post a job
           </Button>
+          <ThemeToggle />
         </div>
         <button
           ref={menuButtonRef}
@@ -182,6 +184,7 @@ export function Navbar() {
           >
             Post a job
           </Button>
+          <ThemeToggle className="mt-3 w-full" />
         </nav>
       </div>
     </header>
