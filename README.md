@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Surhires
 
-## Getting Started
+Surhires is a frontend-only hiring and job discovery experience for employers
+and job seekers. It includes a responsive marketing homepage, searchable mock
+roles, employer pricing, and a validated job-submission demo.
 
-First, run the development server:
+## Setup
+
+Requirements: Node.js 20.9 or newer and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). To verify a production
+build and lint:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run lint
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Set `NEXT_PUBLIC_SITE_URL` to the canonical deployed origin to use it in
+metadata, the sitemap, and robots response. The default is
+`https://surhires.com`.
 
-## Learn More
+## Design
 
-To learn more about Next.js, take a look at the following resources:
+- **Navy and teal** establish a confident, accessible brand; warm white keeps
+  the pages open and calm.
+- **Plus Jakarta Sans** gives headings a distinctive, confident voice.
+- **Inter** keeps longer copy and interface labels easy to scan.
+- Shared color, spacing, type, radius, and elevation tokens live in
+  `app/globals.css`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+app/
+  employers/page.tsx       Employer plans and posting flow
+  jobs/page.tsx            Job discovery page
+  globals.css              Design tokens, base styles, motion
+  icon.svg                 Surhires favicon
+  layout.tsx               Fonts, metadata, shared site shell
+  page.tsx                 Home page
+  robots.ts                Crawler rules
+  sitemap.ts               Public route sitemap
+components/
+  layout/                  Navbar, footer, brand, newsletter
+  sections/                Page sections and interactive experiences
+  ui/                      Shared buttons, cards, tags, headings, accordion
+lib/
+  jobs.ts                  Typed sample role data
+  utils.ts                 Small shared class-name helper
+```
 
-## Deploy on Vercel
+## Assumptions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Job listings, pricing, testimonials, and company names are sample content.
+- The job form and newsletter validate in the browser and display local
+  confirmation states only; they do not send or persist submitted data.
+- Employers can select a plan and request a conversation, but checkout and
+  payment are outside this frontend-only scope.
+- No stock photography is needed: the hero visual is built from HTML/CSS,
+  avatars use initials, and company marks are text-only. Unsplash is allowed
+  in Next Image configuration if product photography is added later.
+- Prices are indicative Indian rupee amounts. Annual pricing is shown as a
+  20% monthly-equivalent discount.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Accessibility and SEO
+
+- Semantic page landmarks, one page-level `h1`, a skip link, visible keyboard
+  focus, accessible form labels/errors, a keyboard-operable FAQ, reduced-motion
+  styles, and a mobile menu focus trap are included.
+- Each public route has page-specific metadata and Open Graph descriptions.
+  The site also exposes `/sitemap.xml`, `/robots.txt`, and an SVG favicon.
+- Keep salary details visible on role cards and ensure any future content,
+  real links, and legal copy are reviewed before production.
+
+## Motion
+
+- Shared timing tokens and reusable motion components live in `app/globals.css`,
+  `components/motion/`, and `hooks/`. Motion is limited to small, purposeful
+  transitions and transform/opacity-based ambient effects.
+- Intersection observers pause off-screen ambient effects; pointer glow and
+  automatic motion are disabled for touch or reduced-motion preferences.
+- The home, jobs, and employer routes preserve their content and keyboard
+  access when motion is reduced. The job filter delay is represented by a brief
+  skeleton state, and pricing/form feedback remains available without animation.
+
+## What I would improve with more time
+
+- Connect forms and role data to a secured API, add server-side validation,
+  rate limiting, consent management, and a real privacy/terms review.
+- Add employer and candidate account flows, application tracking, and
+  operational analytics.
+- Replace sample listings and testimonials with verified customer content.
+- Run Lighthouse in the deployment environment and tune against real field
+  data, including the final image strategy and Core Web Vitals.

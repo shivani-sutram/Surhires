@@ -1,0 +1,3 @@
+export const ROTATING_WORD_INTERVAL_MS = 2500;
+export const COUNT_UP_DURATION_MS = 1400;
+export const HERO_WORD_STAGGER_MS = 70;
