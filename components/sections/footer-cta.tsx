@@ -5,7 +5,7 @@ import { InViewMotion } from "@/components/motion/in-view-motion";
 export function FooterCta() {
   return (
     <InViewMotion>
-      <section className="aurora-background dot-grid-dark relative isolate overflow-hidden bg-navy py-14 sm:py-16 lg:py-20">
+      <section className="aurora-background dot-grid-dark relative isolate overflow-hidden bg-surface-raised py-14 sm:py-16 lg:py-20">
         <Container className="relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
           <SectionHeading
             eyebrow="Ready for what’s next?"
@@ -21,7 +21,7 @@ export function FooterCta() {
             <Button
               href="/jobs"
               variant="secondary"
-              className="border-white/30 bg-transparent text-white hover:border-white hover:bg-white/10"
+              className="border-border-strong bg-transparent text-white hover:border-accent hover:bg-surface/10"
             >
               Find a job
             </Button>

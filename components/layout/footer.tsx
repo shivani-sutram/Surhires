@@ -33,12 +33,12 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-surface-raised text-white">
       <Container className="py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           <div className="sm:col-span-2">
             <Brand light />
-            <p className="mt-4 max-w-sm text-sm leading-6 text-slate-300">
+            <p className="mt-4 max-w-sm text-sm leading-6 text-text-subtle">
               A more thoughtful way to find your next teammate — or your next
               great opportunity.
             </p>
@@ -48,7 +48,7 @@ export function Footer() {
                 href="https://www.linkedin.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex size-10 items-center justify-center rounded-xl bg-white/10 text-teal-bright transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-bright"
+                className="inline-flex size-10 items-center justify-center rounded-xl bg-surface/10 text-accent-hover transition hover:bg-surface/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-hover"
               >
                 <AtSign aria-hidden="true" className="size-5" />
               </a>
@@ -57,7 +57,7 @@ export function Footer() {
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex size-10 items-center justify-center rounded-xl bg-white/10 text-teal-bright transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-bright"
+                className="inline-flex size-10 items-center justify-center rounded-xl bg-surface/10 text-accent-hover transition hover:bg-surface/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-hover"
               >
                 <Camera aria-hidden="true" className="size-5" />
               </a>
@@ -66,7 +66,7 @@ export function Footer() {
                 href="https://www.facebook.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex size-10 items-center justify-center rounded-xl bg-white/10 text-teal-bright transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-bright"
+                className="inline-flex size-10 items-center justify-center rounded-xl bg-surface/10 text-accent-hover transition hover:bg-surface/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-hover"
               >
                 <MessageCircle aria-hidden="true" className="size-5" />
               </a>
@@ -82,7 +82,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-slate-300 transition hover:text-teal-bright focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-bright"
+                      className="text-sm text-text-subtle transition hover:text-accent-hover focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-hover"
                     >
                       {link.label}
                     </Link>
@@ -96,22 +96,22 @@ export function Footer() {
           <h2 className="font-display text-sm font-bold text-white">
             Good work starts here
           </h2>
-          <p className="mt-2 text-sm text-slate-300">
+          <p className="mt-2 text-sm text-text-subtle">
             Get thoughtful opportunities and hiring notes in your inbox.
           </p>
           <NewsletterForm />
         </div>
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-slate-300 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-text-subtle sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Surhires. Made for better work.</p>
           <div className="flex gap-5">
             <Link
-              className="hover:text-teal-bright"
+              className="hover:text-accent-hover"
               href="mailto:hello@surhires.com?subject=Privacy%20question"
             >
               Privacy
             </Link>
             <Link
-              className="hover:text-teal-bright"
+              className="hover:text-accent-hover"
               href="mailto:hello@surhires.com?subject=Terms%20question"
             >
               Terms

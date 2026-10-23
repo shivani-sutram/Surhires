@@ -139,17 +139,17 @@ function FormField({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-semibold text-navy">
+      <label htmlFor={id} className="mb-2 block text-sm font-semibold text-text">
         {label}
       </label>
       {children}
       {helper && (
-        <p id={`${id}-help`} className="mt-1.5 text-xs leading-5 text-slate-600">
+        <p id={`${id}-help`} className="mt-1.5 text-xs leading-5 text-text-muted-strong">
           {helper}
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} role="alert" className="error-message mt-1.5 flex items-start gap-1.5 text-sm text-red-700">
+        <p id={`${id}-error`} role="alert" className="error-message mt-1.5 flex items-start gap-1.5 text-sm text-error">
           <AlertCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
           {error}
         </p>
@@ -173,7 +173,7 @@ function FieldInput({
       id={id}
       aria-invalid={Boolean(error)}
       aria-describedby={[helper ? `${id}-help` : null, error ? `${id}-error` : null].filter(Boolean).join(" ") || undefined}
-      className={`field-input min-h-12 w-full rounded-xl border bg-white px-3 text-sm text-navy outline-none placeholder:text-slate-500 ${error ? "field-shake border-red-700" : "border-slate-200"} ${className ?? ""}`}
+      className={`field-input min-h-12 w-full rounded-xl border bg-surface px-3 text-sm text-text outline-none placeholder:text-text-muted ${error ? "field-shake border-error-border" : "border-border"} ${className ?? ""}`}
       {...props}
     />
   );
@@ -234,7 +234,7 @@ export function EmployerSections() {
   }
 
   const fieldClass =
-    "field-input min-h-12 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-navy outline-none";
+    "field-input min-h-12 w-full rounded-xl border border-border bg-surface px-3 text-sm text-text outline-none";
 
   return (
     <>
@@ -247,8 +247,8 @@ export function EmployerSections() {
             align="center"
           />
           <div className="mb-8 flex flex-col items-center justify-center gap-2 sm:flex-row">
-            <span className="text-sm font-medium text-slate-600">Billing:</span>
-            <div className="billing-toggle relative flex rounded-full border border-slate-200 bg-warm-white p-1">
+            <span className="text-sm font-medium text-text-muted-strong">Billing:</span>
+            <div className="billing-toggle relative flex rounded-full border border-border bg-bg-subtle p-1">
               <span
                 aria-hidden="true"
                 className={`billing-toggle-indicator ${annual ? "is-annual" : ""}`}
@@ -267,10 +267,10 @@ export function EmployerSections() {
                 onClick={() => setAnnual(true)}
                 className={`billing-toggle-option ${annual ? "is-active" : ""}`}
               >
-                Annual <span className="ml-1 text-teal">Save 20%</span>
+                Annual <span className="ml-1 text-accent">Save 20%</span>
               </button>
             </div>
-            <span className="text-xs text-slate-600">Billed {annual ? "annually" : "monthly"} · Prices in INR</span>
+            <span className="text-xs text-text-muted-strong">Billed {annual ? "annually" : "monthly"} · Prices in INR</span>
           </div>
           <div className="grid items-stretch gap-5 lg:grid-cols-3">
             {plans.map((plan, index) => {
@@ -282,30 +282,30 @@ export function EmployerSections() {
                     <SpotlightCard className={`h-full ${featured ? "featured-border" : ""}`}>
                       <Card
                         interactive
-                        className={`relative flex h-full flex-col p-6 sm:p-7 ${featured ? "featured-pricing-card border-navy bg-navy text-white shadow-xl lg:-translate-y-2" : ""}`}
+                        className={`relative flex h-full flex-col p-6 sm:p-7 ${featured ? "featured-pricing-card border-text bg-surface-raised text-white shadow-xl lg:-translate-y-2" : ""}`}
                       >
                     {featured && (
-                      <span className="absolute right-5 top-5 rounded-full bg-teal-bright px-3 py-1 text-xs font-bold text-navy">
+                      <span className="pricing-popular-badge absolute right-5 top-5 rounded-full bg-accent-hover px-3 py-1 text-xs font-bold text-text">
                         Most popular
                       </span>
                     )}
-                    <p className={`font-display text-xl font-bold ${featured ? "text-white" : "text-navy"}`}>
+                    <p className={`font-display text-xl font-bold ${featured ? "text-white" : "text-text"}`}>
                       {plan.name}
                     </p>
-                    <p className={`mt-2 min-h-10 text-sm leading-6 ${featured ? "text-slate-300" : "text-slate-600"}`}>
+                    <p className={`mt-2 min-h-10 text-sm leading-6 ${featured ? "text-text-subtle" : "text-text-muted-strong"}`}>
                       {plan.description}
                     </p>
                     <p className="mt-6">
                       <span
                         key={`${plan.name}-${annual ? "annual" : "monthly"}`}
                         aria-live="off"
-                        className={`price-roll font-display text-3xl font-extrabold tracking-tight tabular-nums sm:text-4xl ${featured ? "text-white" : "text-navy"}`}
+                        className={`price-roll font-display text-3xl font-extrabold tracking-tight tabular-nums sm:text-4xl ${featured ? "text-white" : "text-text"}`}
                       >
                         {formatPrice(price)}
                       </span>
-                      <span className={`ml-1 text-sm ${featured ? "text-slate-300" : "text-slate-600"}`}>/month</span>
+                      <span className={`ml-1 text-sm ${featured ? "text-text-subtle" : "text-text-muted-strong"}`}>/month</span>
                     </p>
-                    <p className={`mt-1 text-xs ${featured ? "text-slate-300" : "text-slate-600"}`}>
+                    <p className={`mt-1 text-xs ${featured ? "text-text-subtle" : "text-text-muted-strong"}`}>
                       {annual ? `${formatPrice(price * 12)} billed yearly` : "Billed monthly"}
                     </p>
                     <Button
@@ -316,10 +316,10 @@ export function EmployerSections() {
                     >
                       Choose {plan.name}
                     </Button>
-                    <ul className="mt-6 space-y-3 border-t border-slate-200/30 pt-6">
+                    <ul className="mt-6 space-y-3 border-t border-border/30 pt-6">
                       {plan.features.map((feature) => (
-                        <li key={feature} className={`flex items-start gap-2.5 text-sm leading-6 ${featured ? "text-white" : "text-slate-600"}`}>
-                          <Check aria-hidden="true" className={`mt-1 size-4 shrink-0 ${featured ? "text-teal-bright" : "text-teal"}`} />
+                        <li key={feature} className={`flex items-start gap-2.5 text-sm leading-6 ${featured ? "text-white" : "text-text-muted-strong"}`}>
+                          <Check aria-hidden="true" className={`mt-1 size-4 shrink-0 ${featured ? "text-accent-hover" : "text-accent"}`} />
                           {feature}
                         </li>
                       ))}
@@ -331,7 +331,7 @@ export function EmployerSections() {
               );
             })}
           </div>
-          <p className="mt-6 text-center text-xs text-slate-600">
+          <p className="mt-6 text-center text-xs text-text-muted-strong">
             Plan selection is a request for a conversation. No payment is collected on this demo site.
           </p>
         </Container>
@@ -353,8 +353,8 @@ export function EmployerSections() {
                   <SpotlightCard className="h-full">
                     <Card className="h-full">
                       <IconChip className="card-icon-chip"><Icon aria-hidden="true" className="size-5" /></IconChip>
-                      <h3 className="weight-reserve mt-4 font-display text-lg font-bold text-navy" data-text={benefit.title}>{benefit.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-slate-600">{benefit.text}</p>
+                      <h3 className="weight-reserve mt-4 font-display text-lg font-bold text-text" data-text={benefit.title}>{benefit.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-text-muted-strong">{benefit.text}</p>
                     </Card>
                   </SpotlightCard>
                 </Reveal>
@@ -373,29 +373,29 @@ export function EmployerSections() {
           />
           <div className="grid items-start gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
             <div>
-              <h3 className="font-display text-xl font-bold text-navy">A simpler way to hire</h3>
+              <h3 className="font-display text-xl font-bold text-text">A simpler way to hire</h3>
               <ul className="mt-5 space-y-4">
                 {[
                   "A shortlist shaped around your real role requirements",
                   "Clear salary expectations from the first conversation",
                   "Helpful support from people who understand hiring",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm leading-6 text-slate-600">
-                    <CircleCheck aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-teal" />
+                  <li key={item} className="flex items-start gap-3 text-sm leading-6 text-text-muted-strong">
+                    <CircleCheck aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-accent" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <Card className="mt-8 bg-warm-white shadow-none">
-                <span aria-hidden="true" className="font-display text-4xl font-bold leading-none text-teal">“</span>
-                <p className="mt-2 font-display text-lg font-bold leading-7 text-navy">
+              <Card className="mt-8 bg-bg-subtle shadow-none">
+                <span aria-hidden="true" className="font-display text-4xl font-bold leading-none text-accent">“</span>
+                <p className="mt-2 font-display text-lg font-bold leading-7 text-text">
                   We met people who understood the role from the very first conversation.
                 </p>
                 <div className="mt-5 flex items-center gap-3">
                   <Avatar initials="RK" />
                   <div>
-                    <p className="text-sm font-semibold text-navy">Rohan Kapoor</p>
-                    <p className="text-xs text-slate-600">Founder, Goodkind</p>
+                    <p className="text-sm font-semibold text-text">Rohan Kapoor</p>
+                    <p className="text-xs text-text-muted-strong">Founder, Goodkind</p>
                   </div>
                 </div>
               </Card>
@@ -404,44 +404,44 @@ export function EmployerSections() {
             <Card className="p-5 shadow-md sm:p-8">
               {submitted ? (
                 <div className="py-6 text-center" role="status">
-                  <span className="success-mark mx-auto grid size-14 place-items-center rounded-full bg-teal text-white">
+                  <span className="success-mark mx-auto grid size-14 place-items-center rounded-full bg-accent text-accent-on">
                     <svg aria-hidden="true" viewBox="0 0 64 64" className="size-9">
                       <path className="success-check-path" d="m17 33 10 10 21-23" pathLength="1" />
                     </svg>
                   </span>
-                  <h3 className="mt-5 font-display text-2xl font-bold text-navy">
+                  <h3 className="mt-5 font-display text-2xl font-bold text-text">
                     Your role is in good hands.
                   </h3>
-                  <p className="mx-auto mt-3 max-w-lg leading-7 text-slate-600">
+                  <p className="mx-auto mt-3 max-w-lg leading-7 text-text-muted-strong">
                     Thanks, {submitted.companyName}. Our team will reach out to{" "}
-                    <span className="font-semibold text-navy">{submitted.workEmail}</span>{" "}
+                    <span className="font-semibold text-text">{submitted.workEmail}</span>{" "}
                     about the {submitted.jobTitle} role.
                   </p>
-                  <dl className="mx-auto mt-6 max-w-sm space-y-2 rounded-xl bg-warm-white p-4 text-left text-sm">
+                  <dl className="mx-auto mt-6 max-w-sm space-y-2 rounded-xl bg-bg-subtle p-4 text-left text-sm">
                     <div className="summary-row flex justify-between gap-4" style={{ "--summary-delay": "0ms" } as CSSProperties}>
-                      <dt className="text-slate-600">Selected plan</dt>
-                      <dd className="font-semibold text-navy">{selectedPlan}</dd>
+                      <dt className="text-text-muted-strong">Selected plan</dt>
+                      <dd className="font-semibold text-text">{selectedPlan}</dd>
                     </div>
                     <div className="summary-row flex justify-between gap-4" style={{ "--summary-delay": "60ms" } as CSSProperties}>
-                      <dt className="text-slate-600">Location</dt>
-                      <dd className="font-semibold text-navy">{submitted.location}</dd>
+                      <dt className="text-text-muted-strong">Location</dt>
+                      <dd className="font-semibold text-text">{submitted.location}</dd>
                     </div>
                     <div className="summary-row flex justify-between gap-4" style={{ "--summary-delay": "120ms" } as CSSProperties}>
-                      <dt className="text-slate-600">Salary range</dt>
-                      <dd className="font-semibold text-navy">{submitted.salaryRange}</dd>
+                      <dt className="text-text-muted-strong">Salary range</dt>
+                      <dd className="font-semibold text-text">{submitted.salaryRange}</dd>
                     </div>
                   </dl>
                   <Button className="mt-7" onClick={postAnotherJob}>Post another job</Button>
                 </div>
               ) : (
                 <>
-                  <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-5">
+                  <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
                     <div>
-                      <h3 className="font-display text-xl font-bold text-navy">Post a job</h3>
-                      <p className="mt-1 text-sm text-slate-600">Selected plan: <span className="font-semibold text-teal">{selectedPlan}</span></p>
+                      <h3 className="font-display text-xl font-bold text-text">Post a job</h3>
+                      <p className="mt-1 text-sm text-text-muted-strong">Selected plan: <span className="font-semibold text-accent">{selectedPlan}</span></p>
                     </div>
-                    <p className="inline-flex items-center gap-2 rounded-full bg-warm-white px-3 py-2 text-xs font-medium text-slate-600">
-                      <Clock3 aria-hidden="true" className="size-4 text-teal" />
+                    <p className="inline-flex items-center gap-2 rounded-full bg-bg-subtle px-3 py-2 text-xs font-medium text-text-muted-strong">
+                      <Clock3 aria-hidden="true" className="size-4 text-accent" />
                       Takes under 2 minutes
                     </p>
                   </div>
@@ -460,7 +460,7 @@ export function EmployerSections() {
                         <FieldInput id="location" name="location" placeholder="e.g. Bengaluru or Remote" value={fields.location} onChange={(event) => updateField("location", event.target.value)} error={errors.location} helper="City, state, or Remote" required />
                       </FormField>
                       <FormField id="job-type" label="Job type" error={errors.jobType}>
-                        <select id="job-type" name="jobType" value={fields.jobType} onChange={(event) => updateField("jobType", event.target.value as JobType | "")} aria-invalid={Boolean(errors.jobType)} aria-describedby={errors.jobType ? "job-type-error" : undefined}                         className={`${fieldClass} ${errors.jobType ? "field-shake border-red-700" : ""}`} required>
+                        <select id="job-type" name="jobType" value={fields.jobType} onChange={(event) => updateField("jobType", event.target.value as JobType | "")} aria-invalid={Boolean(errors.jobType)} aria-describedby={errors.jobType ? "job-type-error" : undefined} className={`${fieldClass} ${errors.jobType ? "field-shake border-error-border" : ""}`} required>
                           <option value="">Select a job type</option>
                           <option>Full-time</option>
                           <option>Part-time</option>
@@ -474,15 +474,15 @@ export function EmployerSections() {
                       </FormField>
                     </div>
                     <FormField id="description" label="Role description" error={errors.description} helper="What will this person work on, and what experience will help them succeed?">
-                      <textarea id="description" name="description" rows={5} maxLength={2000} placeholder="Tell candidates about the role, the team, and what success looks like." value={fields.description} onChange={(event) => updateField("description", event.target.value)} aria-invalid={Boolean(errors.description)} aria-describedby={`description-help${errors.description ? " description-error" : ""}`} className={`${fieldClass} h-auto py-3 leading-6 ${errors.description ? "field-shake border-red-700" : ""}`} required />
+                      <textarea id="description" name="description" rows={5} maxLength={2000} placeholder="Tell candidates about the role, the team, and what success looks like." value={fields.description} onChange={(event) => updateField("description", event.target.value)} aria-invalid={Boolean(errors.description)} aria-describedby={`description-help${errors.description ? " description-error" : ""}`} className={`${fieldClass} h-auto py-3 leading-6 ${errors.description ? "field-shake border-error-border" : ""}`} required />
                     </FormField>
                     {errors.consent && (
-                      <p id="consent-error" role="alert" className="error-message flex items-start gap-1.5 text-sm text-red-700">
+                      <p id="consent-error" role="alert" className="error-message flex items-start gap-1.5 text-sm text-error">
                         <AlertCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
                         {errors.consent}
                       </p>
                     )}
-                    <label className="flex cursor-pointer items-start gap-3 text-sm leading-6 text-slate-600">
+                    <label className="flex cursor-pointer items-start gap-3 text-sm leading-6 text-text-muted-strong">
                       <input
                         id="consent"
                         name="consent"
@@ -491,7 +491,7 @@ export function EmployerSections() {
                         onChange={(event) => updateField("consent", event.target.checked)}
                         aria-invalid={Boolean(errors.consent)}
                         aria-describedby={errors.consent ? "consent-error" : undefined}
-                        className="mt-1 size-4 shrink-0 accent-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+                        className="mt-1 size-4 shrink-0 accent-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                         required
                       />
                       <span>
@@ -501,7 +501,7 @@ export function EmployerSections() {
                     <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={isSubmitting}>
                       {isSubmitting ? "Sending your role…" : "Submit job details"}
                     </Button>
-                    <p className="text-xs text-slate-600">
+                    <p className="text-xs text-text-muted-strong">
                       This demo stores no data. Submitting shows a local confirmation only.
                     </p>
                   </form>

@@ -22,7 +22,7 @@ export function JobCard({
         <div className="flex items-start justify-between gap-4">
           <CompanyLogo name={job.company} short={job.companyShort} className="transition-transform duration-base ease-brand-spring group-hover/card:rotate-[-4deg] group-hover/card:scale-105" />
           <div className="flex items-center gap-2">
-            <span className="rounded-full bg-warm-white px-3 py-1 text-xs font-medium text-slate-600">
+            <span className="rounded-full bg-bg-subtle px-3 py-1 text-xs font-medium text-text-muted-strong">
               {job.posted}
             </span>
             <button
@@ -30,32 +30,32 @@ export function JobCard({
               aria-label={saved ? `Remove saved role: ${job.title}` : `Save role: ${job.title}`}
               aria-pressed={saved}
               onClick={() => setSaved((value) => !value)}
-              className="inline-flex size-9 items-center justify-center rounded-lg text-slate-600 transition-colors duration-fast hover:bg-teal/10 hover:text-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+              className="inline-flex size-9 items-center justify-center rounded-lg text-text-muted-strong transition-colors duration-fast hover:bg-accent/10 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              <Bookmark aria-hidden="true" className={`size-4 ${saved ? "bookmark-pop fill-teal text-teal" : ""}`} />
+              <Bookmark aria-hidden="true" className={`size-4 ${saved ? "bookmark-pop fill-teal text-accent" : ""}`} />
             </button>
           </div>
         </div>
         <div className="mt-5">
-          <p className="text-sm font-medium text-slate-600">{job.company}</p>
+          <p className="text-sm font-medium text-text-muted-strong">{job.company}</p>
           <h3
-            className="weight-reserve mt-1 font-display text-lg font-bold text-navy transition-colors duration-base group-hover/card:text-teal"
+            className="weight-reserve mt-1 font-display text-lg font-bold text-text transition-colors duration-base group-hover/card:text-accent"
             data-text={job.title}
           >
             {job.title}
           </h3>
         </div>
-        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-600">
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-text-muted-strong">
           <span className="inline-flex items-center gap-1.5">
-            <MapPin aria-hidden="true" className="size-4 text-teal" />
+            <MapPin aria-hidden="true" className="size-4 text-accent" />
             {job.location}
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <BriefcaseBusiness aria-hidden="true" className="size-4 text-teal" />
+            <BriefcaseBusiness aria-hidden="true" className="size-4 text-accent" />
             {job.type}
           </span>
         </div>
-        <p className="mt-3 text-sm font-semibold text-navy">
+        <p className="mt-3 text-sm font-semibold text-text">
           ₹{job.salaryMin}–{job.salaryMax} LPA
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -65,7 +65,7 @@ export function JobCard({
         </div>
         <Link
           href={`/jobs#${job.id}`}
-          className="link-underline mt-auto inline-flex items-center gap-1 pt-5 text-sm font-semibold text-teal focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+          className="link-underline mt-auto inline-flex items-center gap-1 pt-5 text-sm font-semibold text-accent focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           View role
           <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-fast group-hover/card:translate-x-0.5" />

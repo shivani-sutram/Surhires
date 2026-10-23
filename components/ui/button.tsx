@@ -22,13 +22,13 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    "btn-primary relative isolate overflow-hidden border border-teal bg-teal text-white transition-[transform,background-color,border-color,box-shadow] hover:-translate-y-0.5 hover:bg-navy hover:shadow-md active:scale-[0.97]",
+    "btn-primary relative isolate overflow-hidden border border-accent bg-accent text-accent-on transition-[transform,background-color,border-color,box-shadow] hover:-translate-y-0.5 hover:bg-surface-raised hover:shadow-md active:scale-[0.97]",
   secondary:
-    "btn-secondary relative isolate overflow-hidden border border-slate-300 bg-white text-navy transition-[transform,border-color,box-shadow] hover:border-navy active:scale-[0.97]",
+    "btn-secondary relative isolate overflow-hidden border border-border-strong bg-surface text-text transition-[transform,border-color,box-shadow] hover:border-text active:scale-[0.97]",
   ghost:
-    "border border-transparent bg-transparent text-navy hover:bg-slate-200/60 active:scale-[0.97]",
+    "border border-transparent bg-transparent text-text hover:bg-border/60 active:scale-[0.97]",
   onDark:
-    "border border-white bg-white text-navy hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97]",
+    "btn-on-dark border border-surface bg-surface text-text hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97]",
 };
 
 const sizes = {
@@ -51,7 +51,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classNames = cn(
-    "group inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-[transform,background-color,border-color,box-shadow,color] duration-base ease-brand-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-warm-white disabled:pointer-events-none disabled:opacity-50",
+    "group inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-[transform,background-color,border-color,box-shadow,color] duration-base ease-brand-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-subtle disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],
     className,

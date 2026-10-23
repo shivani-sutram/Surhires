@@ -15,11 +15,11 @@ function LogoSet({ duplicate = false }: { duplicate?: boolean }) {
   return (
     <div className={cn("logo-set", duplicate && "logo-set-copy")} aria-hidden={duplicate || undefined}>
       {logos.map(([name, descriptor]) => (
-        <div key={name} className="group flex min-h-24 flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 text-center transition duration-base hover:border-teal/30 hover:shadow-sm">
-          <span className="font-display text-lg font-extrabold tracking-tight text-slate-500 transition-colors duration-base group-hover:text-navy">
+        <div key={name} className="group flex min-h-24 flex-col items-center justify-center rounded-2xl border border-border bg-surface px-4 text-center transition duration-base hover:border-accent/30 hover:shadow-sm">
+          <span className="font-display text-lg font-extrabold tracking-tight text-text-muted transition-colors duration-base group-hover:text-text">
             {name}
           </span>
-          <span className="mt-1 text-xs text-slate-500">{descriptor}</span>
+          <span className="mt-1 text-xs text-text-muted">{descriptor}</span>
         </div>
       ))}
     </div>

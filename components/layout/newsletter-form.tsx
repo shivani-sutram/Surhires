@@ -14,7 +14,7 @@ export function NewsletterForm() {
 
   if (submitted) {
     return (
-      <p role="status" className="mt-4 text-sm font-medium text-teal-bright">
+      <p role="status" className="mt-4 text-sm font-medium text-accent-hover">
         You&apos;re on the list. Look out for our next update.
       </p>
     );
@@ -25,7 +25,7 @@ export function NewsletterForm() {
       <label className="sr-only" htmlFor="newsletter-email">
         Email address for career updates
       </label>
-      <div className="flex rounded-xl border border-white/20 bg-white/5 p-1">
+      <div className="flex rounded-xl border border-white/20 bg-surface/5 p-1">
         <input
           id="newsletter-email"
           name="email"
@@ -33,7 +33,7 @@ export function NewsletterForm() {
           required
           autoComplete="email"
           placeholder="Your email address"
-          className="min-w-0 flex-1 bg-transparent px-3 text-sm text-white outline-none placeholder:text-slate-300 focus-visible:ring-2 focus-visible:ring-teal-bright"
+          className="min-w-0 flex-1 bg-transparent px-3 text-sm text-white outline-none placeholder:text-text-subtle focus-visible:ring-2 focus-visible:ring-accent-hover"
         />
         <Button type="submit" size="sm" variant="onDark" showArrow={false}>
           Join

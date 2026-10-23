@@ -110,7 +110,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`nav-shell sticky top-0 z-50 border-b bg-white/95 ${isScrolled ? "is-scrolled border-slate-200/80 shadow-sm backdrop-blur" : "border-transparent backdrop-blur-0"}`}
+      className={`nav-shell sticky top-0 z-50 border-b bg-surface/95 ${isScrolled ? "is-scrolled border-border/80 shadow-sm backdrop-blur" : "border-transparent backdrop-blur-0"}`}
     >
       <Container className={`flex items-center justify-between ${isScrolled ? "h-16" : "h-20"}`}>
         <Brand />
@@ -122,7 +122,7 @@ export function Navbar() {
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
               data-text={link.label}
-              className={`nav-link relative rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-base hover:text-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal ${isActive(link.href) ? "text-navy" : "text-slate-600"}`}
+              className={`nav-link relative rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-base hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${isActive(link.href) ? "text-text" : "text-text-muted-strong"}`}
             >
               {link.label}
             </Link>
@@ -140,7 +140,7 @@ export function Navbar() {
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
-          className="inline-flex size-11 items-center justify-center rounded-xl text-navy transition duration-fast hover:bg-warm-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal lg:hidden"
+          className="inline-flex size-11 items-center justify-center rounded-xl text-text transition duration-fast hover:bg-bg-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
           onClick={() => setIsOpen((open) => !open)}
         >
           {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
@@ -151,7 +151,7 @@ export function Navbar() {
           type="button"
           aria-label="Close navigation menu"
           tabIndex={-1}
-          className="mobile-menu-backdrop fixed inset-0 z-10 bg-navy/20 lg:hidden"
+          className="mobile-menu-backdrop fixed inset-0 z-10 bg-surface-raised/20 lg:hidden"
           onClick={closeMenu}
         />
       )}
@@ -160,7 +160,7 @@ export function Navbar() {
         ref={panelRef}
         aria-label="Mobile navigation"
         aria-hidden={!isOpen}
-        className={`mobile-menu-panel absolute inset-x-0 top-full z-20 border-b border-slate-200 bg-white px-4 shadow-md transition-[opacity,transform,visibility] duration-base ease-brand-out lg:hidden ${isOpen ? "is-open visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
+        className={`mobile-menu-panel absolute inset-x-0 top-full z-20 border-b border-border bg-surface px-4 shadow-md transition-[opacity,transform,visibility] duration-base ease-brand-out lg:hidden ${isOpen ? "is-open visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
       >
         <nav className="mx-auto flex max-h-[calc(100dvh-4rem)] max-w-7xl flex-col overflow-y-auto py-4">
           {links.map((link, index) => (
@@ -171,7 +171,7 @@ export function Navbar() {
               onClick={() => setIsOpen(false)}
               tabIndex={isOpen ? 0 : -1}
               style={{ "--menu-delay": `${index * 40}ms` } as CSSProperties}
-              className={`mobile-menu-link flex min-h-12 items-center rounded-xl px-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal ${isActive(link.href) ? "text-teal" : "text-navy"}`}
+              className={`mobile-menu-link flex min-h-12 items-center rounded-xl px-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${isActive(link.href) ? "text-accent" : "text-text"}`}
             >
               {link.label}
             </Link>

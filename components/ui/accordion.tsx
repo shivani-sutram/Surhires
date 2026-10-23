@@ -14,7 +14,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
   const id = useId();
 
   return (
-    <div className="divide-y divide-slate-200 border-y border-slate-200">
+    <div className="divide-y divide-border border-y border-border">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         const triggerId = `${id}-trigger-${index}`;
@@ -28,12 +28,12 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex min-h-16 w-full items-center justify-between gap-5 py-4 text-left font-display text-base font-semibold text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal sm:text-lg"
+                className="flex min-h-16 w-full items-center justify-between gap-5 py-4 text-left font-display text-base font-semibold text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:text-lg"
               >
                 {item.question}
                 <span
                   className={cn(
-                    "inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-white text-teal transition-transform duration-fast ease-brand-out",
+                    "inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-surface text-accent transition-transform duration-fast ease-brand-out",
                     isOpen && "rotate-45",
                   )}
                 >
@@ -49,7 +49,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
               aria-hidden={!isOpen}
             >
               <div className="overflow-hidden">
-                <p className="max-w-3xl pb-5 pr-10 text-sm leading-7 text-slate-600 sm:text-base">
+                <p className="max-w-3xl pb-5 pr-10 text-sm leading-7 text-text-muted-strong sm:text-base">
                   {item.answer}
                 </p>
               </div>

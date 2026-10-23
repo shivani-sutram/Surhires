@@ -79,7 +79,7 @@ export function JobsExplorer() {
   }
 
   const selectClass =
-    "h-12 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-navy outline-none transition focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-teal/30";
+    "h-12 w-full rounded-xl border border-border bg-surface px-3 text-sm text-text outline-none transition focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/30";
 
   return (
     <Section className="pt-8 sm:pt-10 lg:pt-12">
@@ -89,14 +89,14 @@ export function JobsExplorer() {
           title="Search roles that fit."
           description="Choose from clear, current openings across teams, locations, and work styles."
         />
-        <div className="sticky top-16 z-30 mb-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+        <div className="job-filter-panel sticky top-16 z-30 mb-8 rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-5">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
             <div className="min-w-0 flex-1">
-              <label htmlFor="job-search" className="mb-2 block text-sm font-semibold text-navy">
+              <label htmlFor="job-search" className="mb-2 block text-sm font-semibold text-text">
                 Search roles
               </label>
               <div className="relative">
-                <Search aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-slate-500" />
+                <Search aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-text-muted" />
                 <input
                   id="job-search"
                   type="search"
@@ -109,7 +109,7 @@ export function JobsExplorer() {
             </div>
             <div className={`gap-3 sm:grid-cols-2 lg:flex lg:w-auto ${mobileOpen ? "grid" : "hidden"} lg:grid`}>
               <div className="min-w-0 lg:w-48">
-                <label htmlFor="job-location" className="mb-2 block text-sm font-semibold text-navy">
+                <label htmlFor="job-location" className="mb-2 block text-sm font-semibold text-text">
                   Location
                 </label>
                 <select
@@ -123,7 +123,7 @@ export function JobsExplorer() {
                 </select>
               </div>
               <div className="min-w-0 lg:w-48">
-                <label htmlFor="job-type" className="mb-2 block text-sm font-semibold text-navy">
+                <label htmlFor="job-type" className="mb-2 block text-sm font-semibold text-text">
                   Job type
                 </label>
                 <select
@@ -143,12 +143,12 @@ export function JobsExplorer() {
                 aria-expanded={mobileOpen}
                 aria-controls="job-location job-type"
                 onClick={() => setMobileOpen((open) => !open)}
-                className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 text-sm font-semibold text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal lg:hidden"
+                className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-border px-4 text-sm font-semibold text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
               >
                 <Filter aria-hidden="true" className="size-4" />
                 Filters
                 {activeCount > 0 && (
-                  <span className="inline-flex size-5 items-center justify-center rounded-full bg-teal text-xs text-white">
+                  <span className="inline-flex size-5 items-center justify-center rounded-full bg-accent text-xs text-accent-on">
                     {activeCount}
                   </span>
                 )}
@@ -157,7 +157,7 @@ export function JobsExplorer() {
                 type="button"
                 onClick={clearFilters}
                 disabled={activeCount === 0}
-                className="min-h-12 rounded-xl px-4 text-sm font-semibold text-teal transition hover:bg-teal/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal disabled:cursor-not-allowed disabled:opacity-40"
+                className="min-h-12 rounded-xl px-4 text-sm font-semibold text-accent transition hover:bg-accent/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Clear
               </button>
@@ -171,7 +171,7 @@ export function JobsExplorer() {
               type="button"
               aria-label={`Remove search filter ${query}`}
               onClick={() => queueFilter(() => setQuery(""))}
-              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Tag className="filter-chip gap-2">Search: {query}<X aria-hidden="true" className="size-3" /></Tag>
             </button>
@@ -181,7 +181,7 @@ export function JobsExplorer() {
               type="button"
               aria-label={`Remove location filter ${location}`}
               onClick={() => queueFilter(() => setLocation(""))}
-              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Tag className="filter-chip gap-2">{location}<X aria-hidden="true" className="size-3" /></Tag>
             </button>
@@ -191,7 +191,7 @@ export function JobsExplorer() {
               type="button"
               aria-label={`Remove job type filter ${type}`}
               onClick={() => queueFilter(() => setType(""))}
-              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Tag className="filter-chip gap-2">{type}<X aria-hidden="true" className="size-3" /></Tag>
             </button>
@@ -199,7 +199,7 @@ export function JobsExplorer() {
         </div>
 
         <div className="mb-6 flex items-center justify-end gap-4">
-          <p aria-live="polite" aria-atomic="true" className="shrink-0 rounded-full bg-white px-3 py-1.5 text-sm font-medium text-slate-600 shadow-sm">
+          <p aria-live="polite" aria-atomic="true" className="shrink-0 rounded-full bg-surface px-3 py-1.5 text-sm font-medium text-text-muted-strong shadow-sm">
             Showing {filteredJobs.length} {filteredJobs.length === 1 ? "role" : "roles"}
           </p>
         </div>
@@ -208,7 +208,7 @@ export function JobsExplorer() {
           {isLoading ? (
             <div className="grid gap-5 md:grid-cols-2">
               {Array.from({ length: 4 }, (_, index) => (
-                <div key={index} className="skeleton-card rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div key={index} className="skeleton-card rounded-2xl border border-border bg-surface p-6 shadow-sm">
                   <span className="skeleton-shimmer block size-12 rounded-xl" />
                   <span className="skeleton-shimmer mt-5 block h-5 w-2/3 rounded-lg" />
                   <span className="skeleton-shimmer mt-3 block h-4 w-1/2 rounded-lg" />
@@ -231,17 +231,17 @@ export function JobsExplorer() {
             <IconChip className="mx-auto size-14 rounded-2xl">
               <SearchX aria-hidden="true" className="size-7" />
             </IconChip>
-            <h3 className="mt-5 font-display text-2xl font-bold text-navy">
+            <h3 className="mt-5 font-display text-2xl font-bold text-text">
               No roles match those filters
             </h3>
-            <p className="mx-auto mt-3 max-w-md leading-7 text-slate-600">
+            <p className="mx-auto mt-3 max-w-md leading-7 text-text-muted-strong">
               Try a broader search or clear your filters to see every open opportunity.
             </p>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               <Button onClick={clearFilters}>Clear filters</Button>
               <Link
                 href="/employers"
-                className="inline-flex min-h-12 items-center justify-center rounded-xl px-5 text-sm font-semibold text-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl px-5 text-sm font-semibold text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Explore employer plans
               </Link>
@@ -276,8 +276,8 @@ export function JobsBenefits() {
                 <Card className="flex h-full items-start gap-4">
                   <IconChip><Search aria-hidden="true" className="size-5" /></IconChip>
                   <div>
-                    <h3 className="weight-reserve font-display text-lg font-bold text-navy" data-text={title}>{title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+                    <h3 className="weight-reserve font-display text-lg font-bold text-text" data-text={title}>{title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-text-muted-strong">{text}</p>
                   </div>
                 </Card>
               </SpotlightCard>

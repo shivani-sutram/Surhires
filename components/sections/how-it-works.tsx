@@ -60,7 +60,7 @@ export function HowItWorks() {
         <div
           role="tablist"
           aria-label="Choose who you are"
-          className="tab-switch relative mx-auto mb-9 flex w-fit rounded-full border border-slate-200 bg-warm-white p-1"
+          className="tab-switch relative mx-auto mb-9 flex w-fit rounded-full border border-border bg-bg-subtle p-1"
         >
           <span
             aria-hidden="true"
@@ -101,23 +101,23 @@ export function HowItWorks() {
           aria-labelledby={audience === "employers" ? "how-tab-employers" : "how-tab-seekers"}
           tabIndex={0}
           key={audience}
-          className="tab-panel-content tab-panel relative grid gap-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
+          className="tab-panel-content tab-panel relative grid gap-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           <div
             aria-hidden="true"
-            className="step-connector absolute left-[16%] right-[16%] top-8 hidden border-t-2 border-dashed border-slate-300 md:block"
+            className="step-connector absolute left-[16%] right-[16%] top-8 hidden border-t-2 border-dashed border-border-strong md:block"
           />
           {stepsByAudience[audience].map((step, index) => (
             <Reveal key={`${audience}-${step.title}`} delay={index * 60}>
               <SpotlightCard className="h-full">
-                <Card interactive className="relative h-full border-transparent bg-warm-white shadow-none">
-                  <span className="font-display text-5xl font-bold leading-none text-teal/30">
+                <Card interactive className="relative h-full border-transparent bg-bg-subtle shadow-none">
+                  <span className="feature-step-number font-display text-5xl font-bold leading-none text-accent/30">
                     0{index + 1}
                   </span>
-                  <h3 className="weight-reserve mt-6 font-display text-xl font-bold text-navy" data-text={step.title}>
+                  <h3 className="weight-reserve mt-6 font-display text-xl font-bold text-text" data-text={step.title}>
                     {step.title}
                   </h3>
-                  <p className="mt-3 leading-7 text-slate-600">{step.text}</p>
+                  <p className="mt-3 leading-7 text-text-muted-strong">{step.text}</p>
                 </Card>
               </SpotlightCard>
             </Reveal>
